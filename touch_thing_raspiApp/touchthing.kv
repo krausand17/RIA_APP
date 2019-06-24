@@ -1,0 +1,132 @@
+#:kivy 1.11.0
+
+ScreenManager:
+    MainScreen:
+    MenuScreen:
+	
+
+<MainScreen>:
+	name: 'main_screen'
+	pwrButton: pwrButton
+    BoxLayout:
+        orientation: 'horizontal'
+        size: root.size
+        spacing: 5
+
+		BoxLayout:
+            orientation: 'vertical'
+            spacing: 5
+			
+			Button:
+				id: pwrButton
+				text: "ON/OFF"			
+				on_release: app.button_on_off()			
+				
+			Button:
+				text: "Change Direction"
+				on_release: app.changeDir()
+
+        BoxLayout:
+            orientation: 'vertical'
+            spacing: 5
+
+            Button:
+                text: 'Faster'
+                on_release: app.faster()
+
+
+            Button:
+                text: 'Slower'
+                on_release: app.slower()
+				
+		
+        BoxLayout:
+            orientation: 'vertical'
+            spacing: 5
+
+            Button:
+                text: 'IncAngle'
+                on_release: app.angleInc()
+
+
+            Button:
+                text: 'DecAngle'
+                on_release: app.angleDec()
+
+
+		BoxLayout:
+            orientation: 'vertical'
+            spacing: 5
+
+            Button:
+				text: 'Quit'
+				on_release: app.quit()
+
+
+            Button:
+                text: 'Menu'
+                on_release: app.root.current = 'menu_screen'		
+				
+<MenuScreen>:
+	name: 'menu_screen'
+    BoxLayout:
+        orientation: 'horizontal'
+        size: root.size
+        spacing: 5
+
+		BoxLayout:
+            orientation: 'vertical'
+            spacing: 5
+			
+			Button:
+				text: "prog_1"			
+				on_release: app.select_prog("prog_1")			
+				
+			Button:
+				text: "prog_2"			
+				on_release: app.select_prog("prog_2")
+
+        BoxLayout:
+            orientation: 'vertical'
+            spacing: 5
+
+            Button:
+                text: "prog_3"			
+				on_release: app.select_prog("prog_3")
+
+
+            Button:
+                text: "prog_4"			
+				on_release: app.select_prog("prog_4")
+				
+		
+        BoxLayout:
+            orientation: 'vertical'
+            spacing: 5
+
+            Button:
+                text: 'Run Program'
+                on_release: app.run_prog()
+
+
+            Button:
+                text: 'Stop Program'
+                on_release: app.stop_prog()
+
+
+		BoxLayout:
+            orientation: 'vertical'
+            spacing: 5
+
+            Button:
+				text: 'return to main screen'
+				on_release: app.root.current = 'main_screen'
+
+
+            ToggleButton:
+                text: 'Websocket Server'
+                on_release: app.connectExt()	   
+
+
+
+

@@ -1,0 +1,5 @@
+media queries eingebaut
+width buttons angepasst
+width svgs angepasst
+prog-spalte in layout eingefügt
+webworker eingebaut
