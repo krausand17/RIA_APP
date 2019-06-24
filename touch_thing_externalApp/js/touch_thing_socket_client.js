@@ -1,6 +1,4 @@
 var wsPath = 'ws://10.0.0.6:55555';
-var un = ''
-var pw = ''
 var ws;
 
 
@@ -19,8 +17,7 @@ function connectButton(){
 }
 
 function reconnect(){
-	//ws = new WebSocket(wsPath);
-	ws = new WebSocket("ws://username:password@10.0.0.6:55555");
+	ws = new WebSocket(wsPath);
 	ws.onopen = function(){
 		console.log("client connected");
 		document.getElementById('h_conn').innerHTML = "Connected";		
