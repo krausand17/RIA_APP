@@ -24,7 +24,6 @@ function reconnect(){
 	ws.onopen = function(){
 		console.log("client connected");
 		document.getElementById('h_conn').innerHTML = "Connected";		
-		// document.getElementById('h_conn').style.color = "green";
 		document.getElementById('h_conn').setAttribute("fill", "green");
 		document.getElementById('conn').innerHTML = "Disconnect";		
 	};
@@ -33,8 +32,8 @@ function reconnect(){
 		console.log("client disconnected");
 		document.getElementById('conn').innerHTML = "Connect";		
 		document.getElementById('h_conn').innerHTML = "Disconnected";
-		// document.getElementById('h_conn').style.color = "red";
 		document.getElementById('h_conn').setAttribute("fill", "red");
+		new Notification('Client Disconnected', {body: 'Connecton Terminated'});
 		dev_power = 0;
 		dev_speed = 0;
 		dev_angle = 0;

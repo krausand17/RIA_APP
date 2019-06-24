@@ -50,6 +50,9 @@ function setDevSpeed(dir) {
 				//adjustSpeedMeter();
 				sendSth("setDemSpeedInc");
 			}
+			else if (dev_speed == 10 && "vibrate" in naviagator){
+				navigator.vibrate(500);
+			}
 		}
 		else if (dir == "dec"){
 			if (dev_speed > 0){
@@ -57,6 +60,9 @@ function setDevSpeed(dir) {
 				//console.log("decreased speed to level " + dev_speed);
 				//adjustSpeedMeter();
 				sendSth("setDemSpeedDec");
+			}
+			else if (dev_speed == 0 && "vibrate" in naviagator){
+				navigator.vibrate(500);
 			}
 		}
 	}
@@ -71,6 +77,9 @@ function setDevAngle(dir) {
 				// adjustAngleMeter();
 				sendSth("setAngleInc");
 			}
+			else if (dev_angle == 3 && "vibrate" in naviagator){
+				navigator.vibrate(500);
+			}
 		}
 		else if (dir == "dec"){
 			if (dev_angle > -3){
@@ -78,6 +87,9 @@ function setDevAngle(dir) {
 				// console.log("decreased angle to level " + dev_angle);
 				// adjustAngleMeter();
 				sendSth("setAngleDec");
+			}
+			else if (dev_speed == -3 && "vibrate" in naviagator){
+				navigator.vibrate(500);
 			}
 		}
 	}
