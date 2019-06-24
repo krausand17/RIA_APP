@@ -11,6 +11,7 @@ Gedacht als fix montiertes Bedien- und Steuerelement
 werden Signale über die GPIOs des RaspberryPi gesendet, 
 um die Motoren von "The Jiggler" anzusteuern. 
 Gesteuert werden kann Geschwindigkeit, Drehrichtung und Neigungsgrad.
+Die Eingabe erfolgt über ein Touch-Display.
 
 ExternApp ist vorrangig als eigene Steuerung für einen allfällig
 anwesenden Therapeuten gadacht und stellt lediglich
