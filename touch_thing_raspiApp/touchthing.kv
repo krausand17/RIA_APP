@@ -6,8 +6,14 @@ ScreenManager:
 	
 
 <MainScreen>:
+
 	name: 'main_screen'
 	pwrButton: pwrButton
+	dirLabel: dirLabel
+	speedLabel: speedLabel
+	angleLabel: angleLabel
+	runningLabel: runningLabel
+	
     BoxLayout:
         orientation: 'horizontal'
         size: root.size
@@ -20,7 +26,12 @@ ScreenManager:
 			Button:
 				id: pwrButton
 				text: "ON/OFF"			
-				on_release: app.button_on_off()			
+				on_release: app.button_on_off()
+
+			Label:
+				id: dirLabel
+				size_hint_y: 0.3
+				text: 'Direction: LEFT'
 				
 			Button:
 				text: "Change Direction"
@@ -33,7 +44,11 @@ ScreenManager:
             Button:
                 text: 'Faster'
                 on_release: app.faster()
-
+				
+			Label:
+				id: speedLabel
+				size_hint_y: 0.3
+				text: 'Speed: 0'
 
             Button:
                 text: 'Slower'
@@ -47,7 +62,11 @@ ScreenManager:
             Button:
                 text: 'IncAngle'
                 on_release: app.angleInc()
-
+				
+			Label:
+				id: angleLabel
+				size_hint_y: 0.3
+				text: 'Angle: 0'
 
             Button:
                 text: 'DecAngle'
@@ -61,6 +80,11 @@ ScreenManager:
             Button:
 				text: 'Quit'
 				on_release: app.quit()
+				
+			Label:
+				id: runningLabel
+				size_hint_y: 0.3
+				text: ''
 
 
             Button:
@@ -68,7 +92,13 @@ ScreenManager:
                 on_release: app.root.current = 'menu_screen'		
 				
 <MenuScreen>:
+
 	name: 'menu_screen'
+	selPrLabel: selPrLabel
+	prNameLabel: prNameLabel
+	prDurLabel: prDurLabel
+	wsLabel: wsLabel
+	
     BoxLayout:
         orientation: 'horizontal'
         size: root.size
@@ -80,7 +110,12 @@ ScreenManager:
 			
 			Button:
 				text: "prog_1"			
-				on_release: app.select_prog("prog_1")			
+				on_release: app.select_prog("prog_1")
+
+			Label:
+				id: selPrLabel
+				size_hint_y: 0.3
+				text: 'Selected: '
 				
 			Button:
 				text: "prog_2"			
@@ -94,6 +129,10 @@ ScreenManager:
                 text: "prog_3"			
 				on_release: app.select_prog("prog_3")
 
+			Label:
+				id: prNameLabel
+				size_hint_y: 0.3
+				text: ''			
 
             Button:
                 text: "prog_4"			
@@ -107,7 +146,11 @@ ScreenManager:
             Button:
                 text: 'Run Program'
                 on_release: app.run_prog()
-
+				
+			Label:
+				id: prDurLabel
+				size_hint_y: 0.3
+				text: ''
 
             Button:
                 text: 'Stop Program'
@@ -121,7 +164,11 @@ ScreenManager:
             Button:
 				text: 'return to main screen'
 				on_release: app.root.current = 'main_screen'
-
+				
+			Label:
+				id: wsLabel
+				size_hint_y: 0.3
+				text: ''
 
             ToggleButton:
                 text: 'Websocket Server'

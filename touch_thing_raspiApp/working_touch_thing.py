@@ -20,6 +20,7 @@ from kivy.lang import Builder
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.uix.widget import Widget
 from kivy.uix.button import Button
+from kivy.uix.label import Label
 from kivy.uix.togglebutton import ToggleButton
 from kivy.uix.boxlayout import BoxLayout
 from kivy.event import EventDispatcher
@@ -63,7 +64,7 @@ class TouchThingApp(App):
 	new_loop = ""
 	pwsThread = None
 	progThread = None
-	progChoice = "def_prog"
+	progChoice = ""
 	serverOn = False
 	state = DeviceState()
 	state.bind(msgIN=msg_cb)
@@ -92,22 +93,27 @@ class TouchThingApp(App):
 		sys.exit()
 
 	def faster(app):
-		queue_msg(app.state,"setDemSpeedInc")
+		if app.state.power=="ON":
+			queue_msg(app.state,"setDemSpeedInc")
 
 	def slower(app):
-		queue_msg(app.state,"setDemSpeedDec")
+		if app.state.power=="ON":
+			queue_msg(app.state,"setDemSpeedDec")
 
 	def changeDir(app):
 		queue_msg(app.state,"setDir")		
 			
 	def angleInc(app):
-		queue_msg(app.state,"setAngleInc")
+		if app.state.power=="ON":
+			queue_msg(app.state,"setAngleInc")
 		
 	def angleDec(app):
-		queue_msg(app.state,"setAngleDec")
+		if app.state.power=="ON":
+			queue_msg(app.state,"setAngleDec")
 		
-	def select_prog(app, selection):
+	def select_prog(app, selection):		
 		app.progChoice = selection
+		app.menu_screen.selPrLabel.text="Selected: " + selection
 		print("prog selected:", selection)
 	
 	def run_prog(app):

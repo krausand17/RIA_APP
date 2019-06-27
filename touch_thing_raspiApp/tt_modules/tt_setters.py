@@ -11,7 +11,7 @@ def setPower(state):
 		setAngleNeut(state)
 		if state.curr_speed > 0:
 			state.demand_speed=0
-			ramp(state)		
+			ramp(state)
 		state.app.main_screen.pwrButton.background_color=(1.0, 1.0, 1.0, 1.0)
 		state.power="OFF"		
 	else:
@@ -20,6 +20,8 @@ def setPower(state):
 		if state.last_speed > 0:
 			state.demand_speed=state.last_speed
 			ramp(state)
+	state.app.main_screen.speedLabel.text="Speed: " + str(state.curr_speed)			
+	notify(state, state.curr_speed, "curr_speed")	
 	notify(state, state.power, "power")	
 	
 	
@@ -33,19 +35,27 @@ def setDir(state):
 		state.demand_speed=0
 		ramp(state)
 		sleep(0.1)
-		print("")
+		print("")		
 		state.direction=newDir
 		state.demand_speed=temp
 		ramp(state)
 	else:
 		state.direction=newDir
+	state.app.main_screen.dirLabel.text="Direction: " + newDir
 	notify(state, state.direction, "direction")
-	
+
+def toStart(state):
+	setAngleNeut(state)
+	state.demand_speed=0
+	ramp(state)
+	state.app.main_screen.speedLabel.text="Speed: " + str(state.curr_speed)
+	notify(state, state.curr_speed, "curr_speed")
 	
 def setDemSpeedInc(state):
 	if state.demand_speed < 10:
 		state.demand_speed+=1
 		ramp(state)
+		state.app.main_screen.speedLabel.text="Speed: " + str(state.curr_speed)
 		notify(state, state.curr_speed, "curr_speed")
 		
 	
@@ -53,6 +63,7 @@ def setDemSpeedDec(state):
 	if state.demand_speed > 0:
 		state.demand_speed-=1
 		ramp(state)
+		state.app.main_screen.speedLabel.text="Speed: " + str(state.curr_speed)
 		notify(state, state.curr_speed, "curr_speed")
 		
 	
@@ -60,6 +71,7 @@ def setAngleInc(state):
 	if state.angle < 3:
 		state.angle+=1
 		sleep(0.2)
+		state.app.main_screen.angleLabel.text="Angle: " + str(state.angle)
 		notify(state, state.angle, "angle")
 		
 		
@@ -67,6 +79,7 @@ def setAngleDec(state):
 	if state.angle > -3:
 		state.angle-=1
 		sleep(0.2)
+		state.app.main_screen.angleLabel.text="Angle: " + str(state.angle)
 		notify(state, state.angle, "angle")
 
 

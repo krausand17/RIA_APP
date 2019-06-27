@@ -10,6 +10,7 @@ from .tt_queue import*
 from .tt_logger import ttl
 
 
+
 class appServerThread (threading.Thread):
 	def __init__(self, loop, state):
 		threading.Thread.__init__(self)	
@@ -61,6 +62,7 @@ def createPiServer(loop, state):
 	state.stop = asyncio.Future(loop=loop)
 	
 	server = loop.run_until_complete(start_server)
+	state.app.menu_screen.wsLabel.text=HOST + ':' + str(PORT)
 	print('Websocket-Server listening on ' + HOST + ':' + str(PORT))
 	ttl.info('Websocket-Server listening on {}:{}'.format(HOST,PORT))
 	
@@ -68,7 +70,7 @@ def createPiServer(loop, state):
 		loop.run_until_complete(state.stop)
 		
 	except asyncio.CancelledError:
-		ttl.error("Cancelled Future")
+		ttl.info("Cancelled Future")
 		
 	finally:
 		print("Cleaning up... ")
@@ -82,6 +84,7 @@ def createPiServer(loop, state):
 		state.stop=None
 	print(" ...done.")
 	ttl.info("loop stopped and closed")
+	state.app.menu_screen.wsLabel.text=""
 	
 def proc_req(path, request_headers):
 	ttl.debug("Request Header: ")

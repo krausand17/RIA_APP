@@ -13,5 +13,6 @@ def msg_cb(state, msgIN):
 
 funcList={"setDemSpeedInc":setDemSpeedInc,"setDemSpeedDec":setDemSpeedDec,
 	"setPower":setPower,"setDir":setDir,"setAngleInc":setAngleInc,
-	"setAngleDec":setAngleDec,"setAngleInit":setAngleInit}		
+	"setAngleDec":setAngleDec,"setAngleInit":setAngleInit,
+	"toStart":toStart}		
 		
